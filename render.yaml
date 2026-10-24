@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: aic2026-racore
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: BRATS_ZIP
+        value: /app/brats20.zip
+    healthCheckPath: /api/config
