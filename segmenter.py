@@ -215,12 +215,22 @@ def render_overlays(labels, vols, save_prefix):
 
 
 def run_pipeline(nii_objects, case_name, save_prefix):
+    import os
+    low_mem = os.environ.get('RACORE_LOW_MEM', '') == '1'
+
     vols, zooms = [], None
     for obj in nii_objects:
         d, z = load_modal(obj)
         vols.append(d)
         if zooms is None:
             zooms = z
+
+    if low_mem:
+        vols = [ndimage.zoom(v, 0.5, order=1) for v in vols]
+        zooms = [z * 2 for z in zooms]
+        import gc
+        gc.collect()
+
     labels, brain = segment_case(vols, zooms)
     features = extract_features(labels, vols, zooms, case_name)
     overlay_paths = render_overlays(labels, vols, save_prefix)

@@ -16,5 +16,6 @@ RUN curl -L --retry 3 -o brats20.zip "https://huggingface.co/datasets/Alanna-618
 
 ENV BRATS_ZIP=/app/brats20.zip
 ENV MPLCONFIGDIR=/tmp/mpl
+ENV RACORE_LOW_MEM=1
 
 CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port ${PORT:-7860}"]
