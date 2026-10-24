@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py segmenter.py reportgen.py .
 COPY static ./static
 
-RUN curl -L --retry 3 -o brats20.zip "https://hf-mirror.com/datasets/Alanna-618/brats20-data/resolve/main/brats20.zip" \
+RUN curl -L --retry 3 -o brats20.zip "https://huggingface.co/datasets/Alanna-618/brats20-data/resolve/main/brats20.zip" \
     && python -c "import zipfile; zipfile.ZipFile('brats20.zip').testzip()" \
     && rm -rf /root/.cache
 
