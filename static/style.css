@@ -840,7 +840,7 @@ body {
   transition: opacity 0.3s, transform 0.3s;
 }
 .partner img.partner-round { height: 92px; }
-.partner img.partner-ai { height: 96px; border-radius: 10px; }
+.partner img.partner-ai { height: 80px; }
 .partner:hover img {
   opacity: 1;
   transform: translateY(-2px);
