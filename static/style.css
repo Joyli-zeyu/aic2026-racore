@@ -687,21 +687,20 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 18px;
+  padding: 10px 16px;
   border-radius: 12px;
   transition: background 0.25s;
 }
 .partner:hover { background: var(--surface-2); }
 .partner img {
-  height: 76px;
+  height: 78px;
   width: auto;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.82;
-  transition: filter 0.3s, opacity 0.3s, transform 0.3s;
+  opacity: 0.9;
+  transition: opacity 0.3s, transform 0.3s;
 }
+.partner img.partner-round { height: 92px; }
 .partner:hover img {
-  filter: grayscale(0%);
   opacity: 1;
   transform: translateY(-2px);
 }
