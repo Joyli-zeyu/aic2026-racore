@@ -307,7 +307,7 @@ body {
 }
 .mod-row.mod-flip .mod-info { order: 2; }
 .mod-row.mod-flip .mod-fig { order: 1; }
-.mod-hl-row { border-color: rgba(13, 148, 136, 0.3); background: linear-gradient(180deg, #ffffff, #f4fbfa); }
+.mod-hl-row { grid-template-columns: 1fr; border-color: rgba(13, 148, 136, 0.3); background: linear-gradient(180deg, #ffffff, #f4fbfa); }
 .mod-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
 .mod-head h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
 .mod-info p { color: var(--text-dim); font-size: 14px; line-height: 1.8; }
@@ -380,7 +380,7 @@ body {
 }
 .mod-row.mod-flip .mod-info { order: 2; }
 .mod-row.mod-flip .mod-fig { order: 1; }
-.mod-hl-row { border-color: rgba(13, 148, 136, 0.3); background: linear-gradient(180deg, #ffffff, #f4fbfa); }
+.mod-hl-row { grid-template-columns: 1fr; border-color: rgba(13, 148, 136, 0.3); background: linear-gradient(180deg, #ffffff, #f4fbfa); }
 .mod-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
 .mod-head h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
 .mod-info p { color: var(--text-dim); font-size: 14px; line-height: 1.8; }
