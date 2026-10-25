@@ -285,6 +285,20 @@ body {
   grid-template-columns: repeat(6, 1fr);
   gap: 16px;
 }
+
+.card-icon {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 26px;
+  height: 26px;
+  color: var(--accent);
+  opacity: 0.45;
+  transition: opacity 0.3s;
+}
+.card:hover .card-icon { opacity: 0.85; }
+.card { position: relative; }
+
 .card {
   grid-column: span 2;
   padding: 26px 26px 22px;
