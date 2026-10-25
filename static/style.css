@@ -286,6 +286,23 @@ body {
   gap: 16px;
 }
 
+
+.card-fig { margin: 14px 0 0; }
+.card-fig img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.card-fig figcaption {
+  font-size: 10.5px;
+  color: var(--text-faint);
+  margin-top: 7px;
+  text-align: center;
+  line-height: 1.55;
+}
+
 .card-icon {
   position: absolute;
   top: 22px;
@@ -296,7 +313,24 @@ body {
   opacity: 0.45;
   transition: opacity 0.3s;
 }
-.card:hover .card-icon { opacity: 0.85; }
+.card:hover 
+.card-fig { margin: 14px 0 0; }
+.card-fig img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.card-fig figcaption {
+  font-size: 10.5px;
+  color: var(--text-faint);
+  margin-top: 7px;
+  text-align: center;
+  line-height: 1.55;
+}
+
+.card-icon { opacity: 0.85; }
 .card { position: relative; }
 
 .card {
