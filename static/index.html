@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026第八届全球校园人工智能算法精英大赛 · RaCoRe风险感知分割系统（AI+医学）</title>
-<link rel="stylesheet" href="/static/style.css?v=12">
+<link rel="stylesheet" href="/static/style.css?v=13">
 </head>
 <body>
 <div class="ambient ambient-a"></div>
@@ -73,8 +73,18 @@
   </figure>
 
   <figure class="fig-block">
-    <img src="/static/img/framework.png" alt="RaCoRe 框架总览">
-    <figcaption>图 3 · RaCoRe 框架总览：五类功能模块（RAIM / MTRE / RSMC / MCBA / CCDR）以有界残差形式介入任意主干，右侧衔接放射组学量化与 DeepSeek V4 病例报告</figcaption>
+    <img src="/static/img/fig_arch.jpg" alt="RaCoRe 整体架构">
+    <figcaption>图 3 · RaCoRe 整体架构：3D 医学影像输入经 RAIM 区域自适应输入调制后送入宿主编码器-解码器主干，五类功能模块以有界残差形式介入，输出 WT / TC / ET 分割</figcaption>
+  </figure>
+
+  <figure class="fig-block">
+    <img src="/static/img/fig_pipeline.jpg" alt="RAIM 与 MTRE 的风险估计通路">
+    <figcaption>图 4 · 风险估计通路细节：输入体数据 X 经 RAIM 调制后分两路——MTRE 在多个尺度产生风险图 R<sub>s</sub>，宿主主干（复用参数，虚线框）完成分割并由 ℒ<sub>seg</sub> 监督</figcaption>
+  </figure>
+
+  <figure class="fig-block">
+    <img src="/static/img/fig_rsmc.jpg" alt="RSMC 风险分层记忆压缩机制">
+    <figcaption>图 5 · RSMC 风险分层记忆压缩机制：密集 3D 特征按高 / 中 / 低风险分为三组（W<sup>h</sup> / W<sup>m</sup> / W<sup>l</sup>），经加权自适应池化 P(V,W;q) 压缩为共 749 个 memory token，高风险区域获得更多表征预算</figcaption>
   </figure>
 
   <div class="bento">
@@ -94,14 +104,13 @@
       </div>
       <p>从 1/16、1/8、1/4 三个编码器层级估计任务风险，复合 Dice-Focal 监督前景、关键结构与边界。</p>
     </div>
-    <div class="card card-wide">
+    <div class="card">
       <div class="card-head">
         <span class="card-no">M3</span>
         <h3>RSMC · 风险分层记忆压缩</h3>
       </div>
       <p>特征压缩为高/中/低风险三组 token，软池化保持组间梯度流动，存储开销仅 O(d·T)——全肿瘤 3D 特征场压缩至 749 个风险分层 token。</p>
       <div class="card-math">P(V,W;q) = AAP<sub>q</sub>(V⊙W) / max{AAP<sub>q</sub>(W), ε}</div>
-      <img class="card-img" src="/static/img/fig_rsmc.jpg" alt="RSMC 风险分层记忆压缩机制">
     </div>
     <div class="card">
       <div class="card-head">
@@ -132,10 +141,6 @@
     </div>
   </div>
 
-  <figure class="fig-block">
-    <img src="/static/img/risk_map.png" alt="任务风险图与资源分配">
-    <figcaption>图 4 · 任务风险驱动的不均匀计算分配：风险图（中）由 MTRE 在三个编码器层级估计，高风险体素获得更密集的表征预算（右），低风险背景区域被压缩为少量 token</figcaption>
-  </figure>
 </section>
 
 <section id="engine" class="section">
@@ -147,7 +152,7 @@
 
   <figure class="fig-block">
     <img src="/static/img/modalities.png" alt="四模态 MRI 同层对比">
-    <figcaption>图 5 · 同一病例同层四模态 MRI：T1n 观察解剖结构，T1c 揭示血脑屏障破坏的增强区域，T2w 与 FLAIR 对瘤周水肿敏感——互补信息由 RAIM 在通道与空间维度联合调制</figcaption>
+    <figcaption>图 6 · 同一病例同层四模态 MRI：T1n 观察解剖结构，T1c 揭示血脑屏障破坏的增强区域，T2w 与 FLAIR 对瘤周水肿敏感——互补信息由 RAIM 在通道与空间维度联合调制</figcaption>
   </figure>
 
   <div class="engine-flow">
@@ -178,7 +183,7 @@
 
   <figure class="fig-block">
     <img src="/static/img/wt_tc_et.png" alt="WT/TC/ET 分层分割结果">
-    <figcaption>图 6 · BraTS 评估层级（真实分割结果）：全肿瘤 WT（含水肿）→ 肿瘤核心 TC（坏死+增强）→ 增强肿瘤 ET，三层嵌套关系对应不同临床决策场景</figcaption>
+    <figcaption>图 7 · BraTS 评估层级（真实分割结果）：全肿瘤 WT（含水肿）→ 肿瘤核心 TC（坏死+增强）→ 增强肿瘤 ET，三层嵌套关系对应不同临床决策场景</figcaption>
   </figure>
 </section>
 
@@ -192,12 +197,12 @@
 
   <figure class="fig-block">
     <img src="/static/img/fig_compare.jpg" alt="风险感知精炼恢复小增强肿瘤病灶">
-    <figcaption>图 7 · 风险感知精炼恢复被漏检的小增强肿瘤（Small-ET）：左起为 FLAIR 输入、RaCoRe 风险图、基线预测（部分漏检）、+RaCoRe 预测（恢复）、金标准标注——风险图引导模型把表征预算投向高风险区域</figcaption>
+    <figcaption>图 8 · 风险感知精炼恢复被漏检的小增强肿瘤（Small-ET）：左起为 FLAIR 输入、RaCoRe 风险图、基线预测（部分漏检）、+RaCoRe 预测（恢复）、金标准标注——风险图引导模型把表征预算投向高风险区域</figcaption>
   </figure>
 
   <figure class="fig-block">
     <img src="/static/img/fig_dice.jpg" alt="五类主干 Dice 分数对比">
-    <figcaption>图 8 · 五类异构主干的 Dice 分数对比（蓝：基线 / 橙：+RaCoRe）：平均 Dice 稳步提升，小 ET 子集（B）增益更突出，验证框架的主干无关性</figcaption>
+    <figcaption>图 9 · 五类异构主干的 Dice 分数对比（蓝：基线 / 橙：+RaCoRe）：平均 Dice 稳步提升，小 ET 子集（B）增益更突出，验证框架的主干无关性</figcaption>
   </figure>
 </section>
 
@@ -302,6 +307,6 @@
   <p class="footer-note">RaCoRe · 风险感知压缩与精炼分割平台 · 2026 第八届全球校园人工智能算法精英大赛（AI+医学赛道）<br>本页面输出仅供科研与教学演示，不作为临床诊断依据</p>
 </footer>
 
-<script src="/static/app.js?v=12"></script>
+<script src="/static/app.js?v=13"></script>
 </body>
 </html>

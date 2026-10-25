@@ -696,14 +696,12 @@ body {
   height: 78px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0.82) contrast(1.12);
-  opacity: 0.88;
-  transition: opacity 0.3s, transform 0.3s, filter 0.3s;
+  opacity: 0.92;
+  transition: opacity 0.3s, transform 0.3s;
 }
 .partner img.partner-round { height: 92px; }
 .partner:hover img {
   opacity: 1;
-  filter: brightness(0.72) contrast(1.2);
   transform: translateY(-2px);
 }
 .partners-names {
