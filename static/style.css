@@ -696,12 +696,14 @@ body {
   height: 78px;
   width: auto;
   object-fit: contain;
-  opacity: 0.9;
-  transition: opacity 0.3s, transform 0.3s;
+  filter: brightness(0.82) contrast(1.12);
+  opacity: 0.88;
+  transition: opacity 0.3s, transform 0.3s, filter 0.3s;
 }
 .partner img.partner-round { height: 92px; }
 .partner:hover img {
   opacity: 1;
+  filter: brightness(0.72) contrast(1.2);
   transform: translateY(-2px);
 }
 .partners-names {
@@ -817,6 +819,19 @@ body {
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.35); }
   50% { box-shadow: 0 0 18px 4px rgba(139, 92, 246, 0.22); }
+}
+
+
+.card-wide { grid-column: span 3; }
+.card-img {
+  display: block;
+  width: 100%;
+  margin-top: 16px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+}
+@media (max-width: 1020px) {
+  .card-wide { grid-column: span 2; }
 }
 
 @media (max-width: 1020px) {
