@@ -68,8 +68,13 @@
   </div>
 
   <figure class="fig-block">
+    <img src="/static/img/fig_overview.jpg" alt="传统3D分割与RaCoRe风险感知分割的范式对比">
+    <figcaption>图 2 · 范式对比：传统 3D 分割对全部体素无差别传播特征（背景上浪费大量计算、小病灶性能差）；RaCoRe 先做多尺度风险估计，把 3D 特征场压缩为 749 个风险分层 memory token，让计算聚焦于关键区域——即插即用地增强任意主干</figcaption>
+  </figure>
+
+  <figure class="fig-block">
     <img src="/static/img/framework.png" alt="RaCoRe 框架总览">
-    <figcaption>图 2 · RaCoRe 框架总览：五类功能模块（RAIM / MTRE / RSMC / MCBA / CCDR）以有界残差形式介入任意主干，右侧衔接放射组学量化与 DeepSeek V4 病例报告</figcaption>
+    <figcaption>图 3 · RaCoRe 框架总览：五类功能模块（RAIM / MTRE / RSMC / MCBA / CCDR）以有界残差形式介入任意主干，右侧衔接放射组学量化与 DeepSeek V4 病例报告</figcaption>
   </figure>
 
   <div class="bento">
@@ -129,7 +134,7 @@
 
   <figure class="fig-block">
     <img src="/static/img/risk_map.png" alt="任务风险图与资源分配">
-    <figcaption>图 3 · 任务风险驱动的不均匀计算分配：风险图（中）由 MTRE 在三个编码器层级估计，高风险体素获得更密集的表征预算（右），低风险背景区域被压缩为少量 token</figcaption>
+    <figcaption>图 4 · 任务风险驱动的不均匀计算分配：风险图（中）由 MTRE 在三个编码器层级估计，高风险体素获得更密集的表征预算（右），低风险背景区域被压缩为少量 token</figcaption>
   </figure>
 </section>
 
@@ -142,7 +147,7 @@
 
   <figure class="fig-block">
     <img src="/static/img/modalities.png" alt="四模态 MRI 同层对比">
-    <figcaption>图 4 · 同一病例同层四模态 MRI：T1n 观察解剖结构，T1c 揭示血脑屏障破坏的增强区域，T2w 与 FLAIR 对瘤周水肿敏感——互补信息由 RAIM 在通道与空间维度联合调制</figcaption>
+    <figcaption>图 5 · 同一病例同层四模态 MRI：T1n 观察解剖结构，T1c 揭示血脑屏障破坏的增强区域，T2w 与 FLAIR 对瘤周水肿敏感——互补信息由 RAIM 在通道与空间维度联合调制</figcaption>
   </figure>
 
   <div class="engine-flow">
@@ -173,7 +178,7 @@
 
   <figure class="fig-block">
     <img src="/static/img/wt_tc_et.png" alt="WT/TC/ET 分层分割结果">
-    <figcaption>图 5 · BraTS 评估层级（真实分割结果）：全肿瘤 WT（含水肿）→ 肿瘤核心 TC（坏死+增强）→ 增强肿瘤 ET，三层嵌套关系对应不同临床决策场景</figcaption>
+    <figcaption>图 6 · BraTS 评估层级（真实分割结果）：全肿瘤 WT（含水肿）→ 肿瘤核心 TC（坏死+增强）→ 增强肿瘤 ET，三层嵌套关系对应不同临床决策场景</figcaption>
   </figure>
 </section>
 
@@ -187,12 +192,12 @@
 
   <figure class="fig-block">
     <img src="/static/img/fig_compare.jpg" alt="风险感知精炼恢复小增强肿瘤病灶">
-    <figcaption>图 6 · 风险感知精炼恢复被漏检的小增强肿瘤（Small-ET）：左起为 FLAIR 输入、RaCoRe 风险图、基线预测（部分漏检）、+RaCoRe 预测（恢复）、金标准标注——风险图引导模型把表征预算投向高风险区域</figcaption>
+    <figcaption>图 7 · 风险感知精炼恢复被漏检的小增强肿瘤（Small-ET）：左起为 FLAIR 输入、RaCoRe 风险图、基线预测（部分漏检）、+RaCoRe 预测（恢复）、金标准标注——风险图引导模型把表征预算投向高风险区域</figcaption>
   </figure>
 
   <figure class="fig-block">
     <img src="/static/img/fig_dice.jpg" alt="五类主干 Dice 分数对比">
-    <figcaption>图 7 · 五类异构主干的 Dice 分数对比（蓝：基线 / 橙：+RaCoRe）：平均 Dice 稳步提升，小 ET 子集（B）增益更突出，验证框架的主干无关性</figcaption>
+    <figcaption>图 8 · 五类异构主干的 Dice 分数对比（蓝：基线 / 橙：+RaCoRe）：平均 Dice 稳步提升，小 ET 子集（B）增益更突出，验证框架的主干无关性</figcaption>
   </figure>
 </section>
 
